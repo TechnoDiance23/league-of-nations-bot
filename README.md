@@ -156,5 +156,23 @@ international-diplomatic-bot/
 
 ---
 
+## 🌐 Otomatik Çeviri Sistemi & Açık Kaynak Atıflar / Auto-Translation & Attributions
+
+Botun içinde **`cogs/translation.py`** ve **`cogs/translation_languages.py`** modülleriyle tam entegre çok dilli otomatik çeviri sistemi yer almaktadır:
+
+* **Kanal Bazlı Çeviri:** `global-chat`, `tr-sohbet` (`TR ↔ EN`), `fr-chat` (`FR ↔ TR/EN`) ve diğer dil kanallarında mesajları webhook üzerinden `Orijinal` + `Oto Çeviri` biçiminde yeniden yayınlar.
+* **Açık Kaynak Motorlar & Atıflar (Open-Source Attributions):**
+  * **[Google TranslateGemma (`translategemma-4b-it`)](https://huggingface.co/google/translategemma-4b-it):** Birincil yerel LLM çeviri modeli (Gemma Terms of Use).
+  * **[llama.cpp (`llama-server`)](https://github.com/ggml-org/llama.cpp):** Yerel GGUF model çıkarım sunucusu (MIT License).
+  * **[LibreTranslate](https://github.com/LibreTranslate/LibreTranslate):** Yerel yedek (fallback) çeviri motoru (AGPLv3 License).
+
+### ⚡ Üst Model & Alternatif Çeviri Seçenekleri
+`cogs/translation.py` OpenAI-uyumlu (`/v1/chat/completions`) uç noktalarla çalıştığı için ortam değişkenleri (`TRANSLATION_LLM_URL`, `TRANSLATION_LLM_MODEL`) üzerinden daha güçlü modellere doğrudan geçilebilir:
+1. **TranslateGemma-12B-it / 27B-it (GGUF):** Daha yüksek RAM/VRAM'e sahip sunucularda çok daha yüksek diplomatik çeviri kalitesi.
+2. **Qwen2.5-7B / 14B-Instruct veya Meta NLLB-200:** Çok dilli alternatif açık kaynak modeller.
+3. **Harici OpenAI-Uyumlu API'ler:** OpenAI, Gemini veya DeepSeek API uç noktaları.
+
+---
+
 ## 📄 Lisans / License
 **MIT License** — Uluslararası diplomasi, `parlamentum.org` ve Milletler Cemiyeti Hard-RP toplulukları için geliştirilmiştir.
